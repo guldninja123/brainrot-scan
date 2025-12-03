@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BrainRot Scanner</title>
-  <style>
-    body {
-      text-align: center;
-      font-family: Arial;
-      background-color: #111;
-      color: white;
-    }
-    #result {
-      font-size: 32px;
-      margin-top: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 20px;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Brainrot Scan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background-color: #f6f6f6;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-  <h1>🧠 BrainRot Scanner</h1>
-  <p>Press the button to scan</p>
+    <h1>Brainrot Scanner</h1>
+    <p>Enter any word and I will tell you its brainrot level:</p>
 
-  <button onclick="scan()">Scan</button>
+    <input id="textInput" type="text" placeholder="Type something...">
+    <br>
+    <button onclick="scan()">Scan</button>
 
-  <div id="result"></div>
+    <div id="result"></div>
 
-  <script>
-    function scan() {
-      const results = [
-        "0% BrainRot 🤓",
-        "12% BrainRot 😐",
-        "29% BrainRot 🙂",
-        "48% BrainRot 😳",
-        "69% BrainRot 😈",
-        "85% BrainRot 🫨",
-        "100% BrainRot 💀"
-      ];
-      const r = results[Math.floor(Math.random() * results.length)];
-      document.getElementById("result").innerText = r;
-    }
-  </script>
+    <script>
+        function scan() {
+            const text = document.getElementById("textInput").value.toLowerCase();
+            const result = document.getElementById("result");
 
-</body>
-</html>
+            if (!text) {
+                result.innerText = "Please enter something!";
+                return;
+            }
+
+            const brainrotWords = ["skibidi", "rizz", "fanum", "gyatt", "sigma", "ohio"];
+            let score = 0;
+
+            brainrotWords.forEach(word => {
+                if (text.includes(word)) score++;
+            });
+
+            if (score
